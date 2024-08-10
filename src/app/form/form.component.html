@@ -1,0 +1,290 @@
+<div class="row">
+  <!-- Sidebar -->
+  <div class="col-md-3 col-xl-2 px-sm-2 px-0 bg-dark-subtle">
+    <app-navbar></app-navbar>
+  </div>
+  <!-- Main Content -->
+  <div class="col-md-9 col-xl-10">
+    <div class="container">
+      <div class="row">
+        <form class="container needs-validation" name="form" #f="ngForm" (ngSubmit)="f.form.valid && navigateToList(successPopup) " novalidate >
+          <h2>{{ title }}</h2>
+          <div class="row mb-3">
+          <div class="col-6">
+            <label for="name">Name</label>
+            <label class="text-danger">*</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="data.name"
+              name="name" 
+              required 
+              maxlength="50" 
+              #nameField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && nameField.invalid}"
+              OnlyAlphabets
+              />
+            <div class="text-danger" *ngIf="f?.submitted && nameField.invalid"> Name is required </div>
+          </div>
+          <div class="col-6">
+            <label for="age">Age</label>
+            <label class="text-danger">*</label>
+            <input 
+            type="text" 
+            class="form-control"  
+            [(ngModel)]="data.age"  
+            name="age" 
+            required 
+            #ageField="ngModel"
+            [ngClass]="{'is-invalid' : f?.submitted && ageField.invalid}" 
+            OnlyNumbers
+            />
+            <div class="text-danger" *ngIf="f?.submitted && ageField.invalid"> Age is required </div>
+          </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="phoneNum">Phone Number</label>
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control"  
+              [(ngModel)]="data.phoneNum"
+              name="phoneNum" 
+              required
+              minlength="10" 
+              maxlength="11" 
+              #phoneNumField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && phoneNumField.invalid}"
+              OnlyNumbers
+              />
+              <div class="text-danger" *ngIf="f?.submitted && phoneNumField.invalid"> Phone Number is required </div>
+            </div>
+            <div class="col-6">
+              <label for="email">Email</label>
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="data.email" 
+              name="email" 
+              required 
+              #emailField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && emailField.invalid}"
+              />
+              <div class="text-danger" *ngIf="f?.submitted && emailField.invalid"> Email is required </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="icnumber">IC Number</label>
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control"  
+              [(ngModel)]="data.icNum"
+              name="icnumber" 
+              required 
+              minlength="12" 
+              maxlength="12" 
+              #icnumField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && icnumField.invalid}"
+              OnlyNumbers
+              />
+              <div class="text-danger" *ngIf="f?.submitted && icnumField.invalid"> IC Number is required </div>
+            </div>
+            <div class="col-6">
+              <label for="address">Address 1</label>
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="data.address" 
+              name="address" 
+              required 
+              #addressField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && addressField.invalid}"
+              />
+              <div class="text-danger" *ngIf="f?.submitted && addressField.invalid"> Address 1 is required </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="address2">Address 2</label>
+              <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="address2"
+              name="address2"
+              />
+            </div> 
+            <div class="col-6">
+              <label for="postcode">Postcode</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="data.postcode" 
+            name="postcode" 
+            OnlyNumbers
+            >
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="city">City</label>
+              <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="data.city" 
+              name="city" 
+              />
+            </div>
+            <div class="col-6">
+              <label for="gender">Gender</label>
+              <div class="col-6">
+                <div *ngFor="let gen of gender">
+                  <input 
+                  type="radio" 
+                  [id]="gen.id" 
+                  [value]="gen.id" 
+                  [(ngModel)]="data.gender"
+                  name="gender"
+                  #genderField="ngModel"
+                  > {{gen.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="state">State</label>
+              <select 
+              class="form-control"  
+              [(ngModel)]="data.Value1"  
+              name="state" 
+              > 
+                <option *ngFor="let option of States" [ngValue]="option" [selected]="option === 'all'">{{option}}</option>
+              </select>
+          </div>
+          </div>
+          <div class="row mb-3">
+              <div class="col-6">
+                <label for="faculty">Faculty</label>
+                <label class="text-danger">*</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="data.faculty" 
+                name="faculty" 
+                required
+                #facultyField="ngModel"      
+                [ngClass]="{'is-invalid' : f?.submitted && facultyField.invalid}"
+                >
+                <div class="text-danger" *ngIf="f?.submitted && facultyField.invalid"> Faculty is required </div>
+              </div>
+              <div class="col-6">
+                <label for="university">University</label>
+                <label class="text-danger">*</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="data.university" 
+                name="university" 
+                required 
+                #uniField="ngModel"
+                [ngClass]="{'is-invalid' : f?.submitted && uniField.invalid}"
+                >
+                <div class="text-danger" *ngIf="f?.submitted && uniField.invalid"> University is required </div>
+              </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="company">Company</label>
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="data.company" 
+              name="company" 
+              required 
+              #companyField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && companyField.invalid}"
+              >
+              <div class="text-danger" *ngIf="f?.submitted && companyField.invalid"> Company is required </div>
+              </div>
+            <div class="col-6">
+              <label for="Languages">Languages</label>
+              <div>
+              <!--div *ngFor="let language of Languages">
+                <input 
+                type="checkbox"  
+                [id]="language.id" 
+                [value]="language.id"
+                [(ngModel)]="data.languages" 
+                name="selectedLanguages"
+                #languageField="ngModel"
+                >{{language.name}}
+              </div-->
+              <input 
+                type="checkbox"  
+                [checked]="cCheck" 
+                name="selectedLanguages"
+                >C++
+                <br>
+                <input 
+                type="checkbox"  
+                [checked]="javaCheck" 
+                name="selectedLanguages"
+                >Java
+                <br>
+                <input 
+                type="checkbox"  
+                [checked]="swiftCheck" 
+                name="selectedLanguages"
+                >Swift
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="startDate">Start Date</label>
+              <input 
+              type="date" 
+              class="form-control" 
+              placeholder="yyyy-mm-dd" 
+              name="startDate" 
+              [(ngModel)]="startDate" 
+              ngbDatepicker 
+              #dpStart="ngbDatepicker"
+              >
+            </div>
+            <div class="col-6">
+              <label for="endDate">End Date</label>
+              <input 
+              type="date" 
+              class="form-control" 
+              placeholder="yyyy-mm-dd" 
+              name="endDate" 
+              [(ngModel)]="endDate" 
+              ngbDatepicker 
+              #dpEnd="ngbDatepicker"
+              >
+            </div>
+          </div>
+          <div class="my-5 text-end">
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Submit</button>
+          </div>
+        </form>
+          <ng-template #successPopup let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Success</h4>
+              <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+            </div>
+            <div class="modal-body">
+              <p>Form has been successfully submitted.</p>
+            </div>
+          </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

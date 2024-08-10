@@ -1,0 +1,64 @@
+<div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-xl-2 px-sm-2 px-0 bg-dark-subtle">
+      <app-navbar></app-navbar>
+    </div>
+    <!-- Main Content -->
+    <div class="col-md-9 col-xl-10">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main-box clearfix">
+              <div class="row mt-3">
+                <div class="col py-2">
+                  <h3>List of Students</h3>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                  <button class="btn btn-primary btn-sm d-flex align-items-center" (click)="addNewStudent(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus me-1" viewBox="0 0 16 16">
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                    New Student
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table user-list">
+                  <thead>
+                    <tr>
+                      <th class="text-center"><span></span></th>
+                      <th class="text-center"><span>Name</span></th>
+                      <th class="text-center"><span>Application Status</span></th>
+                      <th class="text-center"><span>Age</span></th> 
+                      <th class="text-center"><span>Phone Number</span></th>
+                      <th class="text-center"><span>Email</span></th>
+                      <th class="text-center"><span>IC Number</span></th>
+                      <th class="text-center"><span>Address</span></th>
+                      <th class="text-center"><span>Company</span></th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of data">
+                      <button class="btn btn-success btn-sm my-2" (click)="addNewStudent(item.id)"><span>View</span></button>
+                      <td class="text-center">{{ item.name }} {{item.languages}}</td>
+                      <td class="text-center" *ngIf=" item.status == 1"> Disapproved</td>
+                      <td class="text-center" *ngIf=" item.status == 2"> Pending Approval</td>
+                      <td class="text-center" *ngIf=" item.status == 3"> Approved</td>
+                      <td class="text-center">{{ item.age }}</td>
+                      <td >{{ item.phoneNum }}</td>
+                      <td class="text-center">{{ item.email }}</td>
+                      <td class="text-center">{{ item.icNum }}</td>
+                      <td >{{ item.address }}</td>
+                      <td class="text-center">{{ item.company }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

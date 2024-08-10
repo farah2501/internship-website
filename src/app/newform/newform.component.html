@@ -1,0 +1,186 @@
+<div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-xl-2 px-sm-2 px-0 bg-dark-subtle">
+      <app-navbar></app-navbar>
+    </div>
+    <!-- Main Content -->
+    <div class="col-md-9 col-xl-10">
+      <div class="container">
+        <div class="row">
+          <form class="container needs-validation" name="form" #f="ngForm" (ngSubmit)="f.form.valid && navigateToNewList(successPopup) " novalidate >
+            <div class="col py-3">
+            <h2>{{ title }}</h2>
+            </div>
+            <div class="row mb-3">
+            <div class="col-6">
+              <label for="fullName">Full Name</label>
+              <label class="text-danger">*</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="data.fullName"
+                name="fullName" 
+                required 
+                #fullnameField="ngModel"
+                [ngClass]="{'is-invalid' : f?.submitted && fullnameField.invalid}"
+                OnlyAlphabets
+                />
+              <div class="text-danger" *ngIf="f?.submitted && fullnameField.invalid"> Full Name is required </div>
+            </div>
+            <div class="col-6">
+              <label for="age">Age</label> 
+              <label class="text-danger">*</label>
+              <input 
+              type="text" 
+              class="form-control"  
+              [(ngModel)]="data.age"  
+              name="age" 
+              required 
+              #ageField="ngModel"
+              [ngClass]="{'is-invalid' : f?.submitted && ageField.invalid}" 
+              OnlyNumbers
+              />
+              <div class="text-danger" *ngIf="f?.submitted && ageField.invalid"> Age is required </div>
+            </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                  <label for="firstname">First Name</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    [(ngModel)]="data.firstName"
+                    name="firstname" 
+                    required 
+                    #firstnameField="ngModel"
+                    [ngClass]="{'is-invalid' : f?.submitted && firstnameField.invalid}"
+                    OnlyAlphabets
+                    />
+                  <div class="text-danger" *ngIf="f?.submitted && firstnameField.invalid"> First Name is required </div>
+                </div>
+                <div class="col-6">
+                  <label for="lastname">Last Name</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                  type="text" 
+                  class="form-control"  
+                  [(ngModel)]="data.lastName"  
+                  name="lastname" 
+                  required 
+                  #lastnameField="ngModel"
+                  [ngClass]="{'is-invalid' : f?.submitted && lastnameField.invalid}" 
+                  OnlyAlphabets
+                  />
+                  <div class="text-danger" *ngIf="f?.submitted && lastnameField.invalid"> Last Name is required </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                  <label for="email">Email</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    [(ngModel)]="data.email"
+                    name="email" 
+                    required 
+                    #emailField="ngModel"
+                    [ngClass]="{'is-invalid' : f?.submitted && emailField.invalid}"
+                    />
+                  <div class="text-danger" *ngIf="f?.submitted && emailField.invalid"> Email is required </div>
+                </div>
+                <div class="col-6">
+                  <label for="icNum">IC Number</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                  type="text" 
+                  class="form-control"  
+                  [(ngModel)]="data.icNum"  
+                  name="icNum" 
+                  required 
+                  #icnumField="ngModel"
+                  [ngClass]="{'is-invalid' : f?.submitted && icnumField.invalid}" 
+                  />
+                  <div class="text-danger" *ngIf="f?.submitted && icnumField.invalid"> IC Number is required </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                  <label for="phonenum">Phone Number</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    [(ngModel)]="data.phoneNum"
+                    name="phonenum" 
+                    required 
+                    #phonenumField="ngModel"
+                    [ngClass]="{'is-invalid' : f?.submitted && phonenumField.invalid}"
+                    />
+                  <div class="text-danger" *ngIf="f?.submitted && phonenumField.invalid"> Phone Number is required </div>
+                </div>
+                <div class="col-6">
+                  <label for="job">Job</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                  type="text" 
+                  class="form-control"  
+                  [(ngModel)]="data.job"  
+                  name="job" 
+                  required 
+                  #jobField="ngModel"
+                  [ngClass]="{'is-invalid' : f?.submitted && jobField.invalid}" 
+                  />
+                  <div class="text-danger" *ngIf="f?.submitted && jobField.invalid"> Job is required </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                  <label for="company">Company</label>
+                  <label class="text-danger">*</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    [(ngModel)]="data.company"
+                    name="company" 
+                    required 
+                    #companyField="ngModel"
+                    [ngClass]="{'is-invalid' : f?.submitted && companyField.invalid}"
+                    OnlyAlphabets
+                    />
+                  <div class="text-danger" *ngIf="f?.submitted && companyField.invalid"> Company is required </div>
+                  </div>
+                <div class="col-6">
+                    <label for="verify">Verification</label>
+                    <div class="col-6">
+                      <div *ngFor="let ver of verification">
+                        <input 
+                        type="radio" 
+                        [id]="ver.verify" 
+                        [value]="ver.verify" 
+                        [(ngModel)]="data.verify"
+                        name="verify"
+                        #verifyField="ngModel"
+                        > {{ver.value}}
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-5 text-end">
+              <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Submit</button>
+            </div>
+          </form>
+            <ng-template #successPopup let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title">Success</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+              </div>
+              <div class="modal-body">
+                <p>Form has been successfully submitted.</p>
+              </div>
+            </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
